@@ -1,0 +1,16 @@
+.vscode
+.env
+.DS_Store
+
+# Terraform
+.terraform
+*.tfstate*
+*.tfvars
+*.tfplan
+!*-example.tfvars
+
+# Config
+config.env.sh
+
+# Ansible
+hosts
