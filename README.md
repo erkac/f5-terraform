@@ -1,9 +1,25 @@
-# f5-terraform
-F5 Networks demo using Terraform
+# F5 Networks and Terraform Demo Deployment
 
+Terraform BIG-IP Provider [documentation](https://www.terraform.io/docs/providers/bigip/index.html)
+
+## BIG-IP Preparation
+
+1. Console
+  * Login as root, set the password
+  * `# config` -> set the static IP and Default GW
+2. WebUI
+  * Login as admin, set the new password (or `# tmsh modify auth user admin password <password>`)
+  * License the box
 
 ## Examples
 
+### ./example1
+
+### ./example2
+
+### ./example3
+
+## Terraform Notes
 
 ### Remove Virtual Server Configuration
         $ terraform destroy -target=bigip_ltm_virtual_server.http
@@ -19,15 +35,6 @@ F5 Networks demo using Terraform
 ### Remove All remaining Configuration
 
         $ terraform destroy
-
-
-### 1. Modify the master.tf file to configure the iApp resource to use simple http JSON file
-```
-resource "bigip_sys_iapp" "simplehttp" {
-        name = "simplehttp"
-        jsonfile = "${file("simplehttp.json")}"
-}
-```
 
 terraform plan
 

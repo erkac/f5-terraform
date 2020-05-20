@@ -1,7 +1,26 @@
+
+variable "bigip-mgmt" {}
+variable "bigip-user" {}
+variable "bigip-passwd" {}
+
+variable "cloudflare_email" {}
+variable "cloudflare_token" {}
+
+variable "base_domain" {}
+variable "appname" {}
+variable "vip" {}
+
+
 provider "bigip" {
-   address = "10.1.1.245"
-   username = "admin"
-   password = "admin"
+   address = var.bigip-mgmt
+   username = var.bigip-user
+   password = var.bigip-passwd
+}
+
+provider "cloudflare" {
+  version = "~> 2.0"
+  email = var.cloudflare_email
+  api_key = var.cloudflare_token
 }
 
 resource "bigip_sys_ntp" "ntp1" {
@@ -14,7 +33,7 @@ resource "bigip_sys_dns" "dns1" {
     description = "/Common/DNS1"
     name_servers = ["8.8.8.8"]
     number_of_dots = 2
-    search = ["f5.com"]
+    search = ["f5demo.app"]
 }
 
 resource "bigip_net_vlan" "vlan1" {
@@ -53,8 +72,8 @@ resource "bigip_ltm_monitor" "monitor" {
         name = "/Common/terraform_monitor"
         parent = "/Common/http"
         send = "GET /\r\n"
-        timeout = "16"
-        interval = "5"
+        timeout = "999"
+        interval = "999"
 }
 
 resource "bigip_ltm_pool"  "pool" {
@@ -86,10 +105,24 @@ resource "bigip_ltm_pool_attachment" "attach_node" {
 }
 
 resource "bigip_ltm_virtual_server" "http" {
-        pool = "/Common/terraform-pool"
         name = "/Common/terraform_vs_http"
-        destination = "10.1.10.100"
-        port = 80
+        description = "TF VirtualServer"
+        destination = var.vip
+        port = 8080
+        #profiles = ["/Common/tcp", "/Common/http"]
         source_address_translation = "automap"
+        pool = "/Common/terraform-pool"
         depends_on = [bigip_ltm_pool.pool]
 }
+
+resource "cloudflare_record" "f5demo" {
+  zone_id = "9c465b6e5b0f29e8385311c55653c490"
+  name    = var.appname
+  value   = bigip_ltm_virtual_server.http.destination
+  type    = "A"
+  proxied = false
+}
+
+#output "ip" {
+#  value = [ for instance in digitalocean_droplet.droplet: instance.ipv4_address]
+#}

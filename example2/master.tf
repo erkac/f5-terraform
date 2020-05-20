@@ -48,3 +48,8 @@ resource "bigip_net_selfip" "selfip2" {
         vlan = "/Common/external"
         depends_on = ["bigip_net_vlan.vlan2"]
 }
+
+resource "bigip_sys_iapp" "simplehttp" {
+        name = "simplehttp"
+        jsonfile = "${file("simplehttp.json")}"
+}
