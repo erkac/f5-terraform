@@ -1,4 +1,4 @@
-
+# Variables Definition
 variable "bigip-mgmt" {}
 variable "bigip-user" {}
 variable "bigip-passwd" {}
@@ -10,7 +10,7 @@ variable "base_domain" {}
 variable "appname" {}
 variable "vip" {}
 
-
+# Terraform Providers
 provider "bigip" {
    address = var.bigip-mgmt
    username = var.bigip-user
@@ -23,6 +23,8 @@ provider "cloudflare" {
   api_key = var.cloudflare_token
 }
 
+# Resources
+# F5 BIG-IP
 resource "bigip_sys_ntp" "ntp1" {
     description = "/Common/NTP1"
     servers = ["time.google.com"]
@@ -115,6 +117,7 @@ resource "bigip_ltm_virtual_server" "http" {
         depends_on = [bigip_ltm_pool.pool]
 }
 
+# Cloudflare
 resource "cloudflare_record" "f5demo" {
   zone_id = "9c465b6e5b0f29e8385311c55653c490"
   name    = var.appname
@@ -123,6 +126,7 @@ resource "cloudflare_record" "f5demo" {
   proxied = false
 }
 
+# Output
 output "vip" {
   value = [ bigip_ltm_virtual_server.http.destination ]
   description = "F5 BIG-IP VS IP Address"
