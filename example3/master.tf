@@ -123,6 +123,7 @@ resource "cloudflare_record" "f5demo" {
   proxied = false
 }
 
-#output "ip" {
-#  value = [ for instance in digitalocean_droplet.droplet: instance.ipv4_address]
-#}
+output "vip" {
+  value = [ bigip_ltm_virtual_server.http.destination ]
+  description = "F5 BIG-IP VS IP Address"
+}
