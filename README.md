@@ -2,6 +2,9 @@
 
 Terraform BIG-IP Provider [documentation](https://www.terraform.io/docs/providers/bigip/index.html)
 
+## Terraform instalation
+
+
 ## BIG-IP Preparation
 
 1. Console
@@ -13,9 +16,17 @@ Terraform BIG-IP Provider [documentation](https://www.terraform.io/docs/provider
 
 ## Examples
 
+```shell
+$ cd ./example1
+$ terraform init # initialize the config and download providers
+$ terraform plan
+$ terraform apply
+```
+
+
 ### ./example1
 
-* basic example with variables included directly in the config
+* basic example with variables included directly in the config, please validate before use
 * BIG-IP Configuration includes networking, DNS, NTP, VS and Pool
 
 ### ./example2
@@ -50,4 +61,5 @@ $ terraform destroy -target=bigip_ltm_pool.pool
 ```shell
 $ terraform destroy
 ```
+
 
