@@ -19,14 +19,13 @@ Terraform BIG-IP Provider [documentation](https://www.terraform.io/docs/provider
 ```shell
 $ cd ./example1
 $ terraform init # initialize the config and download providers
-$ terraform plan
-$ terraform apply
+$ terraform plan # build the plan
+$ terraform apply # apply the configuration
 ```
-
 
 ### ./example1
 
-* basic example with variables included directly in the config, please validate before use
+* basic example with variables included directly in the config, please validate the provider configuration before use
 * BIG-IP Configuration includes networking, DNS, NTP, VS and Pool
 
 ### ./example2
@@ -37,6 +36,7 @@ $ terraform apply
 
 * an ./example1 based demo
 * variables stored in .tfvars file
+  * please fill the correct credentials and options into _terraform.tfvars_
 * besides the BIG-IP, TF will also create a DNS record in Cloudflare
 * as example of linking values for the Cloudflare DNS A Record is used the _bigip_ltm_virtual_server.http.destination_ value
 
