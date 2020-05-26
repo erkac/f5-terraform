@@ -34,7 +34,7 @@ $ terraform apply # apply the configuration
 
 ### ./example3
 
-* an ./example1 based demo
+* an (./example1)[https://github.com/erkac/f5-terraform#example1] based demo
 * variables stored in .tfvars file
   * please fill the correct credentials and options into _terraform.tfvars_
 * besides the BIG-IP, TF will also create a DNS record in Cloudflare
