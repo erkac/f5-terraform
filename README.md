@@ -12,7 +12,7 @@ Terraform BIG-IP Provider [documentation](https://www.terraform.io/docs/provider
   * `# config` -> set the static IP and Default GW
 2. WebUI
   * Login as admin, set the new password (or `# tmsh modify auth user admin password <password>`)
-  * License the box
+  * License the box (as TF can't license F5, only via BIG-IQ License Manager)
 
 ## Examples
 

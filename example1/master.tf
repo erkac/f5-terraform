@@ -4,6 +4,20 @@ provider "bigip" {
    password = "admin"
 }
 
+#resource "bigip_sys_provision" "provision-ltm" {
+#  name         = "ltm_provision"
+#  full_path    = "ltm"
+#  cpu_ratio    = 0
+#  disk_ratio   = 0
+#  level        = "Nominal"
+#  memory_ratio = 0
+#}
+
+#resource "bigip_cm_device" "my_new_device" {
+#  name                = "bigipA.f5demo.app"
+#  configsync_ip       = "10.1.1.245"
+#}
+
 resource "bigip_sys_ntp" "ntp1" {
     description = "/Common/NTP1"
     servers = ["time.google.com"]
