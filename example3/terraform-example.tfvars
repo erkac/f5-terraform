@@ -1,4 +1,3 @@
-cloudflare_email = ""
 cloudflare_token = ""
 
 bigip-mgmt = "10.1.1.245"
@@ -7,5 +6,5 @@ bigip-passwd = "admin"
 
 base_domain = "example.com"
 
-appname = "demo"
+appname = "tfdemo"
 vip = ""

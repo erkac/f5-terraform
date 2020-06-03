@@ -3,7 +3,7 @@ variable "bigip-mgmt" {}
 variable "bigip-user" {}
 variable "bigip-passwd" {}
 
-variable "cloudflare_email" {}
+#variable "cloudflare_email" {}
 variable "cloudflare_token" {}
 
 variable "base_domain" {}
@@ -19,8 +19,7 @@ provider "bigip" {
 
 provider "cloudflare" {
   version = "~> 2.0"
-  email = var.cloudflare_email
-  api_key = var.cloudflare_token
+  api_token = var.cloudflare_token
 }
 
 # Resources

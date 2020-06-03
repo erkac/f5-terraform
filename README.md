@@ -10,6 +10,8 @@ Terraform BIG-IP Provider [documentation](https://www.terraform.io/docs/provider
 1. Console
   * Login as root, set the password
   * `# config` -> set the static IP and Default GW
+  * `# tmsh modify sys global-settings mgmt-dhcp disabled`
+  * `# tmsh save sys config`
 2. WebUI
   * Login as admin, set the new password (or `# tmsh modify auth user admin password <password>`)
   * License the box (as TF can't license F5, only via BIG-IQ License Manager)
