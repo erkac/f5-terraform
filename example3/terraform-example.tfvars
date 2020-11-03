@@ -1,3 +1,4 @@
+cloudflare_email = ""
 cloudflare_token = ""
 
 bigip-mgmt = "10.1.1.245"

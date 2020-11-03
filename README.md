@@ -1,9 +1,11 @@
 # F5 and Terraform Demo Deployment
 
-Terraform BIG-IP Provider [documentation](https://www.terraform.io/docs/providers/bigip/index.html)
+* Terraform BIG-IP Provider [documentation](https://www.terraform.io/docs/providers/bigip/index.html)
+* More complex examples of F5 Terraform [JeffGiroux/f5-terraform](https://github.com/JeffGiroux/f5_terraform)
 
 ## Terraform instalation
 
+1. macOS: `# brew install terraform`
 
 ## BIG-IP Preparation
 
@@ -23,6 +25,7 @@ $ cd ./example1
 $ terraform init # initialize the config and download providers
 $ terraform plan # build the plan
 $ terraform apply # apply the configuration
+$ terraform destroy # remove configuration
 ```
 
 ### ./example1
@@ -38,7 +41,7 @@ $ terraform apply # apply the configuration
 
 * an [./example1](https://github.com/erkac/f5-terraform#example1) based demo
 * variables stored in .tfvars file
-  * please fill the correct credentials and options into _terraform.tfvars_
+  * please fill the correct credentials and options into `terraform.tfvars`
 * besides the BIG-IP, TF will also create a DNS record in Cloudflare
 * as example of linking values for the Cloudflare DNS A Record is used the _bigip_ltm_virtual_server.http.destination_ value
 
